@@ -31,7 +31,7 @@ export class HomePage {
     this.loadMoreProducts(null);
 
     this.WooCommerce.getAsync("products").then( (data) => {
-      console.log(JSON.parse(data.body));
+      // console.log(JSON.parse(data.body));
       this.products = JSON.parse(data.body);
     }, (err) => {
       console.log(err)
@@ -49,7 +49,7 @@ export class HomePage {
   }
 
   loadMoreProducts(event){
-    console.log(event)
+    // console.log(event)
     if(event == null){
 
       this.page = 2;

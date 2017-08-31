@@ -9,6 +9,8 @@ import { Menu } from '../pages/menu/menu';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+
+
 @NgModule({
   declarations: [
     MyApp,
@@ -18,6 +20,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   ],
   imports: [
     BrowserModule,
+
     IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],
@@ -29,6 +32,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   providers: [
     StatusBar,
     SplashScreen,
+
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
