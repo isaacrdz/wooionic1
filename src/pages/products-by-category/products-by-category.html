@@ -1,6 +1,12 @@
 <ion-header>
 
   <ion-navbar>
+
+    <ion-buttons left>
+      <button color="danger" ion-button icon menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
     <ion-title>Products by category</ion-title>
   </ion-navbar>
 
@@ -22,4 +28,8 @@
       </button>
     </ion-item>
   </ion-list>
+  <ion-infinite-scroll (ionInfinite)="loadMoreProducts($event)">
+
+  <ion-infinite-scroll-content></ion-infinite-scroll-content>
+</ion-infinite-scroll>
 </ion-content>
