@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams,ToastController } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
+import { ProductsDetailsPage } from '../products-details/products-details';
 
 import * as WC from 'woocommerce-api';
 
@@ -12,16 +13,15 @@ export class ProductsByCategoryPage {
 
 
   WooCommerce: any;
-  products:any[] = [];
-  page:number;
-  category:any;
+  products: any[];
+  page: number;
+  category: any;
 
   constructor(public navCtrl: NavController,
-              public navParams: NavParams,
-              public toastCtrl:ToastController) {
+              public navParams: NavParams) {
 
-    this.page = 1;
-    this.category = this.navParams.get("category");
+                this.page = 1;
+                this.category = this.navParams.get("category");
 
     this.WooCommerce = WC({
       url: "http://localhost:8888/store1/",
@@ -34,19 +34,11 @@ export class ProductsByCategoryPage {
 
 
     this.WooCommerce.getAsync("products?filter[category]=" + this.category.slug).then((data) => {
-     console.log(JSON.parse(data.body));
-     this.products = JSON.parse(data.body);
-
-     if(JSON.parse(data.body).length < 10){
-
-       this.toastCtrl.create({
-         message: "No more products",
-         duration: 2000
-       }).present();
-     }
-   }, (err) => {
-     console.log(err)
-   })
+      console.log(JSON.parse(data.body));
+      this.products = JSON.parse(data.body);
+    }, (err) => {
+      console.log(err)
+    })
 
 
 
@@ -56,22 +48,25 @@ export class ProductsByCategoryPage {
     console.log('ionViewDidLoad ProductsByCategoryPage');
   }
 
-  loadMoreProducts(event){
-    this.page++ ;
-    console.log("Getting page" + this.page);
-    this.WooCommerce.getAsync("products?filter[category]=" + this.category.slug + "&page=" + this.page).then((data)=>{
-      let temp =(JSON.parse(data.body));
+  loadMoreProducts(event) {
+    this.page++;
+    console.log("Getting page " + this.page);
+    this.WooCommerce.getAsync("products?filter[category]=" + this.category.slug + "&page=" + this.page).then((data) => {
+      let temp = (JSON.parse(data.body));
 
-    this.products = this.products.concat(JSON.parse(data.body));
-    console.log(this.products);
-    event.complete();
+      this.products = this.products.concat(JSON.parse(data.body).products)
+      console.log(this.products);
+      event.complete();
 
-    if(temp.length  < 10){
-      event.enable(false);
-    }
+      if (temp.length < 10)
+        event.enable(false);
     })
-
   }
+
+  openProductPage(product){
+    this.navCtrl.push(ProductsDetailsPage, {"product":product});
+  }
+
 
 
 }

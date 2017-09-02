@@ -14,8 +14,8 @@ export class Menu {
 
   homePage: Component;
   WooCommerce: any;
-  categories: any[] = [];
-  @ViewChild('content') childNavCtrl:NavController;
+  categories: any[];
+  @ViewChild('content') childNavCtrl: NavController;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams) {
@@ -31,7 +31,7 @@ export class Menu {
     });
 
     this.WooCommerce.getAsync("products/categories").then((data) => {
-      console.log(JSON.parse(data.body));
+      // console.log(JSON.parse(data.body));
 
       let temp: any[] = JSON.parse(data.body);
 
@@ -50,8 +50,16 @@ export class Menu {
             temp[i].icon = "car"
           }
 
+          if(temp[i].slug == "harware"){
+            temp[i].icon = "hammer"
+          }
+
           if(temp[i].slug == "armas-pesadas"){
             temp[i].icon = "hammer"
+          }
+
+          if(temp[i].slug == "mochilas"){
+            temp[i].icon = "car"
           }
 
 
