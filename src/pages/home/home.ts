@@ -32,7 +32,7 @@ export class HomePage {
     this.loadMoreProducts(null);
 
     this.WooCommerce.getAsync("products").then( (data) => {
-      // console.log(JSON.parse(data.body));
+      console.log(JSON.parse(data.body));
       this.products = JSON.parse(data.body);
     }, (err) => {
       console.log(err)
@@ -69,7 +69,7 @@ export class HomePage {
         event.enable(false);
       }
 
-      if(JSON.parse(data.body).length < 10){
+      if(JSON.parse(data.body).length > 10){
 
         this.toastCtrl.create({
           message: "No more products",

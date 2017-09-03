@@ -27,7 +27,7 @@ export class Menu {
       consumerKey:"ck_371eef5724bae9555956920650fb8b6df14b3444",
       consumerSecret:"cs_afdd6cba9a4e0e4fcda3353a61005018aabed88d",
       wpAPI: true,
-      version: 'wc/v1'
+    version: 'wc/v1'
     });
 
     this.WooCommerce.getAsync("products/categories").then((data) => {
