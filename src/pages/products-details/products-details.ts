@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams,ToastController } from 'ionic-angular';
+import { NavController, NavParams,ToastController, ModalController } from 'ionic-angular';
 import * as WC from 'woocommerce-api';
 import { Storage } from '@ionic/storage';
+import { Cart } from '../cart/cart';
 
 
 
@@ -18,7 +19,8 @@ export class ProductsDetailsPage {
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public storage:Storage,
-              public toastCtrl:ToastController) {
+              public toastCtrl:ToastController,
+              public modalCtrl:ModalController) {
 
     this.product = this.navParams.get("product")
     console.log(this.product);
@@ -89,5 +91,7 @@ export class ProductsDetailsPage {
       })
     });
   }
-
+openCart(){
+  this.modalCtrl.create(Cart).present();
+}
 }
