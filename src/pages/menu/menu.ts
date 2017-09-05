@@ -30,45 +30,30 @@ export class Menu {
     });
 
     this.WooCommerce.getAsync("products/categories").then((data) => {
-      // console.log(JSON.parse(data.body));
+      console.log(JSON.parse(data.body).product_categories);
 
-      let temp: any[] = JSON.parse(data.body);
+      let temp: any[] = JSON.parse(data.body).product_categories;
 
-      for(let i = 0; i < temp.length; i++) {
-        if(temp[i].parent == 0){
+      for (let i = 0; i < temp.length; i++) {
+        if (temp[i].parent == 0) {
 
-          if(temp[i].slug == "motocicletas"){
-            temp[i].icon = "hammer"
+          if (temp[i].slug == "tenis") {
+            temp[i].icon = "shirt";
           }
-
-          if(temp[i].slug == "autos-deportivos"){
-            temp[i].icon = "car"
+          if (temp[i].slug == "music") {
+            temp[i].icon = "musical-notes";
           }
-
-          if(temp[i].slug == "basicos"){
-            temp[i].icon = "car"
+          if (temp[i].slug == "posters") {
+            temp[i].icon = "images";
           }
-
-          if(temp[i].slug == "harware"){
-            temp[i].icon = "hammer"
-          }
-
-          if(temp[i].slug == "armas-pesadas"){
-            temp[i].icon = "hammer"
-          }
-
-          if(temp[i].slug == "mochilas"){
-            temp[i].icon = "car"
-          }
-
-
 
           this.categories.push(temp[i]);
         }
       }
-    }, (err)=> {
+
+    }, (err) => {
       console.log(err)
-    })
+    });
 
 
 

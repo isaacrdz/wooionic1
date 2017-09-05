@@ -31,12 +31,12 @@ export class ProductsByCategoryPage {
                 });
 
 
-    this.WooCommerce.getAsync("products?filter[category]=" + this.category.slug).then((data) => {
-      console.log(JSON.parse(data.body));
-      this.products = JSON.parse(data.body);
-    }, (err) => {
-      console.log(err)
-    })
+  this.WooCommerce.getAsync("products?filter[category]=" + this.category.slug).then((data) => {
+    console.log(JSON.parse(data.body));
+    this.products = JSON.parse(data.body).products;
+  }, (err) => {
+    console.log(err)
+  })
 
 
 

@@ -27,10 +27,10 @@
   </ion-slides>
   <ion-card-content>
     <ion-card-title>
-      {{ product.name }} &nbsp;
+      {{ product.title }} &nbsp;
       <ion-chip *ngFor="let cat of product.categories" style="margin-left:5px;">
         <ion-label color="danger">
-          {{ cat.slug }}
+          {{ cat }}
         </ion-label>
       </ion-chip>
     </ion-card-title>
