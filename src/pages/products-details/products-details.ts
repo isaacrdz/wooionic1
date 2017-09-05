@@ -32,11 +32,13 @@ export class ProductsDetailsPage {
 
     });
 
-    this.WooCommerce.getAsync('products/'+ this.product.id +'/reviews').then((data)=>{
-      this.reviews = JSON.parse(data.body);
+    this.WooCommerce.getAsync('products/' + this.product.id + '/reviews').then((data) => {
+
+      this.reviews = JSON.parse(data.body).product_reviews;
       console.log(this.reviews);
-    }, (err)=>{
-      console.log(err)
+
+    }, (err) => {
+      console.log(err);
     })
 
 

@@ -75,7 +75,8 @@
     <ion-grid>
       <ion-row *ngFor="let review of reviews">
         <ion-col col-4>
-          <b>{{review.name}}</b> <br/>
+          <b>{{ review.reviewer_name }}</b><br/>
+
           <span *ngIf="review.rating >= 1">
             <ion-icon style="color:#d4af37" small name="star"></ion-icon>
           </span>
